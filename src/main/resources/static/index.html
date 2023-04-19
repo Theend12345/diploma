@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+ <title>sdasdfas</title>
+<!--<script src="https://www.google.com/jsapi"></script>--> 
+
+<script src="js/html2pdf.bundle.js"></script>
+
+ <script src = "js/loader.js"></script>
+ <link rel="stylesheet" href="css/style.css">
+ <link rel="stylesheet" href="css/button_style.css">
+ <link rel="stylesheet" href="css/select_style.css">
+ <link rel="stylesheet" href="css/table.css">
+
+ 
+
+</head>
+<body>
+    
+    <div class="conteyner">
+        <div class="topnav">
+            <a href="index.html#p1">Таблица</a>
+            <a href="index.html#p2">Информация</a>
+            <a href="index.html#air">Анализ</a>
+            <a href="index.html#oil">Статистика</a>
+            <a href="index.html#spravka">Станции</a>
+            <a onclick="generatePDF()">Получить PDF</a>
+            
+          </div>
+<div class = firstSection>
+
+    <h2 id = "p1" style="margin-left: 3%;">Сформированные акты</h2>
+
+    <div class="divtable">
+    <table id="actList">
+    
+    </table>
+    </div>
+    <p><img src="img/indicate.png" width="25%" height="25%"></p>
+
+</div>
+
+<div class = secondSection>
+<h2 id = "p2">Информация об отдельных объектах</h2>
+
+<a>Выбрать станцию </a>
+<select id="selobj" onchange="findByStation(this)">
+    <option selected value="">Все станции</option>
+    <option value="Мозырь">Мозырь</option>
+    <option value="Речица">Речица</option>
+    <option value="Мосты">Мосты</option>
+    <option value="Берестовица">Берестовица</option>
+    <option value="Волковыск-Город">Волковыск-Город</option>
+    <option value="Рожанка">Рожанка</option>
+    
+</select>
+<p></p>
+<a>Выбрать объект </a>
+<select id="selobj" onchange="findByObject(this)">
+    <option selected value="">Все объекты</option>
+    <option value="Стрелочный перевод">Стрелочный перевод</option>
+    <option value="Путь">Путь</option>
+    <option value="Светофор">Светофор</option>
+    <option value="Устройство связи">Устройство связи</option>
+    <option value="Рельсовая цепь">Рельсовая цепь</option>
+    <option value="Контрольный замок стрелочного">Контрольный замок стрелочного</option>
+    <option value="Устройство сигнализации">Устройство сигнализации</option>
+    <option value="Опора контактной сети">Опора контактной сети</option>
+    <option value="Сортировочная горка">Сортировочная горка</option>
+</select>
+
+<p></p>
+
+
+<a>Выбрать КМО </a>
+<select id="selobj" onchange="findByKmo(this)">
+    <option selected value=""> </option>
+    <option value="1">КМО №1</option>
+    <option value="2">КМО №2</option>
+    <option value="3">КМО №3</option>
+    <option value="4">КМО №4</option>
+    <option value="5">КМО №5</option>
+    <option value="6">КМО №6</option>
+    <option value="7">КМО №7</option>
+    <option value="8">КМО №8</option>
+    
+</select>
+
+<p></p>
+
+<a>Ограничения </a>
+<select id="selobj" onchange="findByLimit(this)">
+    <option selected value=""> </option>
+    <option value="Не ограничивает">Не ограничивает</option>
+    <option value="Движение закрывается">Движение закрывается</option>
+    <option value="15 км.ч">5-15 км.ч</option>
+    <option value="25 км.ч">16-25 км.ч</option>
+    <option value="35 км.ч">26-35 км.ч</option>
+    <option value="40 км.ч">36-45 км.ч</option>
+    <option value="50 км.ч">46-55 км.ч</option>
+    <option value="60 км.ч">56-65 км.ч</option>
+    
+</select>
+
+<p></p>
+
+
+<a>Выбрать неисправность </a>
+
+<script src = "js/jquery.min.js"></script>
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
+
+<select id="list" onchange="findByDefect(this)">
+    <option selected value=""></option>
+</select>
+
+
+
+<p></p><a id = "most"></a></p>
+
+<a>Просмотр по дате назначения</a>
+<input id="v1" type = "date"> -
+<input id="v2" type = "date">
+
+<p></p>
+
+<button onclick="findByDateBetween()" class="button-28" role="button">Найти</button>
+
+
+<button onclick="loadAct()" class="button-28" role="button" style="margin-left: 3%;">Сбросить</button>
+<div id="invoice">
+<div class = "graph1" id="air" style="width: 500px; height: 400px;"></div>
+
+<div class="graph2" id="oil" style="width: 800px; height: 400px;"></div>
+<div class="graph2" id="lim" style="width: 800px; height: 400px;"></div>
+<div class = "html2pdf__page-break"></div>
+<div class="graph2" id="deff" style="width: 800px; height: 400px;"></div>
+</div>
+</div>
+
+<h2 id = "spravka" style="margin-left: 3%;">Справочник станций</h2>
+<div class="divtable">
+    <table  id="stList" style="color:khaki;">
+    
+    </table>
+    </div>
+
+    <div style="margin-left:3%;">
+        <p style="margin-top: 3%;"><a>Поиск по станциям</a></p>
+        <input id="search_field" >
+        <button  onclick="searchByName()" class="button-28" role="button">Найти</button>
+    </div>
+   
+    <div id = "updt" class = "update_part">
+        <h2>изменить название станции</h2>
+        <p style="margin-top: 70px;"></p>
+        <a>Изменить название станции: </a> <a id = "statinf"> станция не выбрана</a>
+        <p></p>
+        <input style="margin-left: 110px;" id="update_field"> <button onclick="updateStation()" class="button-28" role="button">Изменить</button>
+    </div>
+<script src = "js/index.js"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+
+.divtable{
+  overflow: scroll;
+  overflow-x: auto;
+  height: 500px;
+}
+
+.table2.tr2{
+  background-color: rgb(243, 241, 106);
+  table-layout: fixed;
+  color: rgb(24, 23, 23);
+  padding: 8px 12px;
+}
+
+
+table {
+            
+            font-family: sans-serif;
+            -webkit-font-smoothing: antialiased;
+            font-size: 85%;
+            width: 100%;
+            table-layout: fixed;
+            background-color: #1a1a1a;
+            
+        }
+
+
+       
+
+        tr{
+          background-color: rgb(213 189 90);
+          table-layout: fixed;
+          color: rgb(24, 23, 23);
+          padding: 8px 12px;
+        }
+
+      
+
+        th {
+            background-color: #262626;
+            color: rgb(245, 241, 40);
+            table-layout: fixed;
+            font-weight: normal;
+            padding: 8px 12px;
+            text-align: center;
+        }
+
+
+
+
+        .divtable::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+.divtable::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+	border: 2px solid #555555;
+}
+

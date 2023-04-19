@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+
+<h2>NOTIFICATION</h2>
+
+<table id="notificationList">
+
+</table>
+
+<input id="search_field">
+<button onclick="searchByActive()">Search by Active</button>
+<script>
+
+    function searchByActive() {
+        var active = document.getElementById("search_field").value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var notifications = JSON.parse(this.responseText);
+                var html = '<tr>\n' +
+                    '        <th>Notification id</th>\n' +
+                    '        <th>Notification url</th>\n' +
+                    '        <th>Notification active</th>\n' +
+                    '        <th>Notification date</th>\n' +
+                    '        <th>Notification text</th>\n' +
+                    '    </tr>';
+                for (var i = 0; i < notifications.length; i++) {
+                    var notification = notifications[i];
+                    html = html + '<tr><td>' + notification.id + '</td>\n' +
+                        '        <td>' + notification.url + '</td>\n' +
+                        '        <td>' + notification.active + '</td>\n' +
+                        '        <td>' + notification.date + '</td>' +
+                        '        <td>' + notification.text + '</td>';
+                }
+                document.getElementById("notificationList").innerHTML = html;
+            }
+        };
+        xhttp.open("GET", "http://localhost:8080/notification/findByActive?active=" + active, true);
+        xhttp.send();
+    }
+
+
+    function loadNotification() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var notifications = JSON.parse(this.responseText);
+                var html = '<tr>\n' +
+                    '        <th>Notification id</th>\n' +
+                    '        <th>Notification url</th>\n' +
+                    '        <th>Notification active</th>\n' +
+                    '        <th>Notification date</th>\n' +
+                    '        <th>Notification text</th>\n' +
+                    '    </tr>';
+                for (var i = 0; i < notifications.length; i++) {
+                    var notification = notifications[i];
+                    html = html + '<tr><td>' + notification.id + '</td>\n' +
+                        '        <td>' + notification.url + '</td>\n' +
+                        '        <td>' + notification.active + '</td>\n' +
+                        '        <td>' + notification.date + '</td>' +
+                        '        <td>' + notification.text + '</td>';
+                }
+                document.getElementById("notificationList").innerHTML = html;
+            }
+        };
+        xhttp.open("GET", "http://localhost:8080/notification/findAll", true);
+        xhttp.send();
+    }
+
+    loadNotification();
+</script>
+</body>
+</html>

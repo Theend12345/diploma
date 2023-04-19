@@ -1,0 +1,102 @@
+ 
+ body{
+  background-color: rgb(238, 238, 238);
+ }
+
+
+a{
+    font-size: 20px;
+    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+h2{
+    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    text-transform: uppercase;
+}
+
+option{
+    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+[type="date"] {
+  background:#ffff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+/* custom styles */
+
+label {
+  display: block;
+}
+input {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 3px 5px;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+  width: 190px;
+}
+
+.firstSection{
+  margin-top: 5%;
+}
+
+.secondSection{
+  margin-top: 3%;
+  margin-left: 3%;
+  margin-bottom: 3%;
+}
+
+
+.graph1{
+  justify-content:space-between;
+  align-items: center;
+  display: flex;
+  padding-top: 5%;
+  padding-left: 38%;
+  fill : rgb(238, 238, 238); 
+  background-color: rgb(238, 238, 238);
+}
+
+.graph1 rect{
+  
+  fill : rgb(238, 238, 238);
+}
+
+.graph2{
+  justify-content:space-between;
+  align-items: center;
+  display: flex;
+  fill : rgb(238, 238, 238); 
+  padding-top: 1%;
+  padding-bottom: 5%;
+  padding-left: 20%;
+}
+
+.conteyner{
+    max-width: 1366px;
+    margin: 0 auto;
+   
+  } 
+
+  .update_part{
+    margin-top: 3%;
+    align-items: center;
+    justify-content:center;
+    position: relative;
+    width: 500px;
+    height: 250px;
+    top: 35%;
+    padding: 1%;
+    left: 35%;
+    background-color: rgb(213 189 90);
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(37, 37, 37);
+    
+  }
